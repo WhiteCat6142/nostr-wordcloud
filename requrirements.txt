@@ -1,0 +1,5 @@
+pynostr==0.6.2
+matplotlib
+wordcloud
+mecab-python3
+japanize_matplotlib
