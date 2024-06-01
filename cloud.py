@@ -9,6 +9,7 @@ class words:
 
     def __init__(self):
         self.word_list = []
+        self.wc = None
 
     def get_words(self,text):
         mecab = MeCab.Tagger("-Osimple")
@@ -35,11 +36,13 @@ class words:
         return wc
 
     def render(self,font_path):
-        wc = self.cloud(font_path)
-        plt.imshow(wc, interpolation='bilinear')
+        if self.wc is None:
+            self.wc = self.cloud(font_path)
+        plt.imshow(self.wc, interpolation='bilinear')
         plt.axis('off')
         plt.show()
 
     def save_file(self,file,font_path):
-        wc = self.cloud(font_path)
-        wc.to_file(file)
+        if self.wc is None:
+            self.wc = self.cloud(font_path)
+        self.wc.to_file(file)
