@@ -3,3 +3,4 @@ matplotlib
 wordcloud
 mecab-python3
 japanize_matplotlib
+argparse
