@@ -23,13 +23,15 @@ class words:
             if (tmp[1] in ["名詞"]) and (tmp[2] in ["一般", "固有名詞"])  and (tmp[0]!="自分") and (tmp[0]!="人"):
                 tmpword+=keiyou+tmp[0]
                 keiyou=""
-            elif if (tmp[1] in ["形容詞"]):
+            elif (tmp[1] in ["形容詞", "接頭詞"]):
                 self.word_list.append(tmpword)
                 tmpword=""
                 keiyou+=tmp[0]
             elif tmpword!="":
                 self.word_list.append(tmpword)
                 tmpword=""
+                keiyou=""
+            else:
                 keiyou=""
         if tmpword!="":
             self.word_list.append(tmpword)
