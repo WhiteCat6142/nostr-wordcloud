@@ -24,7 +24,7 @@ class words:
             elif tmpword!="":
                 self.word_list.append(tmpword)
                 tmpword=""
-         if tmpword!="":
+        if tmpword!="":
             self.word_list.append(tmpword)
             tmpword=""
 
