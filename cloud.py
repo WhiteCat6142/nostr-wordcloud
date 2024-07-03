@@ -21,7 +21,7 @@ class words:
             tmp = re.split('\t|-', line)
             if (tmp[1] in ["名詞"]) and (tmp[2] in ["一般", "固有名詞"])  and (tmp[0]!="自分") and (tmp[0]!="人"):
                 tmpword+=tmp[0]
-            else if tmpword!="":
+            elif tmpword!="":
                 self.word_list.append(tmpword)
                 tmpword=""
          if tmpword!="":
