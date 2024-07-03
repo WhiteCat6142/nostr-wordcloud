@@ -25,8 +25,8 @@ class words:
                 self.word_list.append(tmpword)
                 tmpword=""
          if tmpword!="":
-                self.word_list.append(tmpword)
-                tmpword=""
+            self.word_list.append(tmpword)
+            tmpword=""
 
     @classmethod
     def read_file(cls,file):
