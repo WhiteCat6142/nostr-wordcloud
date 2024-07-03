@@ -18,7 +18,7 @@ class words:
         lines = lines[0:-2]
         for line in lines:
             tmp = re.split('\t|-', line)
-            if (tmp[1] in ["名詞"]) and (tmp[2] in ["一般", "固有名詞"])  and (tmp[0]!="自分"):
+            if (tmp[1] in ["名詞"]) and (tmp[2] in ["一般", "固有名詞"])  and (tmp[0]!="自分") and (tmp[0]!="人"):
                 self.word_list.append(tmp[0])
 
     @classmethod
