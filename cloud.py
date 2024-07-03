@@ -16,10 +16,17 @@ class words:
         parsed = mecab.parse(text)
         lines = parsed.split('\n')
         lines = lines[0:-2]
+        tmpword=""
         for line in lines:
             tmp = re.split('\t|-', line)
             if (tmp[1] in ["名詞"]) and (tmp[2] in ["一般", "固有名詞"])  and (tmp[0]!="自分") and (tmp[0]!="人"):
-                self.word_list.append(tmp[0])
+                tmpword+=tmp[0]
+            else if tmpword!="":
+                self.word_list.append(tmpword)
+                tmpword=""
+         if tmpword!="":
+                self.word_list.append(tmpword)
+                tmpword=""
 
     @classmethod
     def read_file(cls,file):
