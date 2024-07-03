@@ -17,13 +17,20 @@ class words:
         lines = parsed.split('\n')
         lines = lines[0:-2]
         tmpword=""
+        keiyou=""
         for line in lines:
             tmp = re.split('\t|-', line)
             if (tmp[1] in ["名詞"]) and (tmp[2] in ["一般", "固有名詞"])  and (tmp[0]!="自分") and (tmp[0]!="人"):
-                tmpword+=tmp[0]
+                tmpword+=keiyou+tmp[0]
+                keiyou=""
+            elif if (tmp[1] in ["形容詞"]):
+                self.word_list.append(tmpword)
+                tmpword=""
+                keiyou+=tmp[0]
             elif tmpword!="":
                 self.word_list.append(tmpword)
                 tmpword=""
+                keiyou=""
         if tmpword!="":
             self.word_list.append(tmpword)
             tmpword=""
