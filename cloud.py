@@ -47,7 +47,7 @@ class words:
         return " ".join(self.word_list)
 
     def cloud(self,font_path):
-        wc = WordCloud(font_path=font_path,background_color='white')
+        wc = WordCloud(font_path=font_path, background_color='white', prefer_horizontal=0.8, relative_scaling=0.1, max_font_size=45)
         wc.generate(str(self))
         return wc
 
