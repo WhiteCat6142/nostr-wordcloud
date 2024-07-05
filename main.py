@@ -22,6 +22,8 @@ font_path=font.find_font(args.font)
 w=cloud.words()
 contents=fetch.fetch(args.relay,ban_list,args.limit)
 for content in contents:
+    if len(content) > 200:
+        continue
     lines=content.split()
     for line in lines:
         if re.match('[a-zA-z0-9!#$%&\'*+-\\\.^_`/|~:,]+',line):
