@@ -22,6 +22,14 @@ def fetch(relay,ban_list,limit,author):
         event_msg = relay_manager.message_pool.get_event()
         if event_msg.event.pubkey in ban_list:
             continue
+        warning=False
+        if event_msg.event.tags is not None:
+            for t in event_msg.event.tags:
+                if t[0]=="content-warning":
+                    warning=True
+                    break
+        if warning:
+            continue
         contents.append(event_msg.event.content)
     relay_manager.close_all_relay_connections()
     return contents
