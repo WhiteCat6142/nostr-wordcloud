@@ -4,11 +4,14 @@ from pynostr.event import EventKind
 import time
 import uuid
 
-def fetch(relay,ban_list,limit):
+def fetch(relay,ban_list,limit,author):
     contents=[]
     relay_manager = RelayManager(timeout=2)
     relay_manager.add_relay(relay)
-    filters = FiltersList([Filters(kinds=[EventKind.TEXT_NOTE], limit=limit)])
+    if author is None:
+        filters = FiltersList([Filters(kinds=[EventKind.TEXT_NOTE], limit=limit)])
+    else:
+        filters = FiltersList([Filters(kinds=[EventKind.TEXT_NOTE], limit=limit, authors=[author])])
     subscription_id = uuid.uuid1().hex
     relay_manager.add_subscription_on_all_relays(subscription_id, filters)
     relay_manager.run_sync()

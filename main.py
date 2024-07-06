@@ -12,6 +12,7 @@ parser.add_argument("--noshow", action="store_true", help="without image viewer"
 parser.add_argument("--font", type=str, default="NotoSansMonoCJK-VF", help="font file name")
 parser.add_argument("--relay", type=str, default="wss://yabu.me", help="nostr relay")
 parser.add_argument("--limit", type=int, default=350, help="number of events")
+parser.add_argument("--pubkey", type=str, default=None, help="author pubkey (optinal)")
 parser.add_argument("-o", type=str, default="wordcloud_nostr.png", help="output file")
 args = parser.parse_args()
 
@@ -20,7 +21,7 @@ ban_list=["77911886971fe579fe3e4f90d9dc7e91fcd74850dc2853681fff17654b218091","a3
 font_path=font.find_font(args.font)
 
 w=cloud.words()
-contents=fetch.fetch(args.relay,ban_list,args.limit)
+contents=fetch.fetch(args.relay, ban_list, args.limit, args.pubkey)
 for content in contents:
     if len(content) > 200:
         continue
